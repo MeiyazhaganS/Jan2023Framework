@@ -19,6 +19,7 @@ public class Loginpage  {
 	private By forgetPassword=By.linkText("Forgotten Password");
 	private By loginBtn=By.xpath("//input[@type='submit']");
 	private By registerLink=By.linkText("Register");
+	private By MyRepo=By.linkText("My Repo");
 	private By loginErrorMessage=By.cssSelector("div.alert.alert-danger.alert-dismissible");
 	public Loginpage(WebDriver driver) {
 		this.driver=driver;
