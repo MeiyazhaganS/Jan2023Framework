@@ -1,10 +1,11 @@
 package com.cart.pages;
 
+import org.openqa.selenium.By;
+
 public class cartPage {
 
-	public static void main(String args[]) {
-		int i=10;
-		System.out.println(i);
+	private By cart=By.id("cart");
+	public void addCart() {
+		System.out.println("page actions is done");
 	}
-
 }
