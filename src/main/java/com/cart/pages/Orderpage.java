@@ -5,7 +5,6 @@ public class Orderpage {
 
 	public void makeOrder() {
 		System.out.println("order page...");
-	}public static void main(String args[]) {
-		
+		System.out.println("order is in progrss...");
 	}
 }
