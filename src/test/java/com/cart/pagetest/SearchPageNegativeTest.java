@@ -13,14 +13,14 @@ public class SearchPageNegativeTest extends Basetest{
 	@BeforeTest
 	public void searchPageTest() {
 		accountpage=loginpage.doLogin(prop.getProperty("username"),prop.getProperty("password"));
-		searchpage=accountpage.InvalidProductSearch("t-shirt");		
+		searchpage=accountpage.InvalidProductSearch("samsung");		
 	}
 	@DataProvider
 	public Object[][] getInvalidProductName() {
 		return new Object[][] {
-			{"roses"},
+			{"apple"},
 			{"macbook"},
-			{"keys"},
+			{"mac"},
 		};
 	}
 	
@@ -30,7 +30,7 @@ public class SearchPageNegativeTest extends Basetest{
 	Assert.assertTrue(results,"you have searched right product");
 	}
 
-	@Test
+	@Test(enabled = false)
 	public void sum() {
 		int a=10;int b=30;
 		int sum=a+b;

@@ -9,28 +9,29 @@
 		<!-- <listener class-name="com.cart.listeners.AnnotationTransformer" />-->
 	</listeners>
 
-	<!--  <test name="Online Cart Login Page Test">
+	  <test name="Online Cart Login Page Test">
 		<classes>
 			<class name="com.cart.pagetest.Loginpagetest" />
 		</classes>
-	</test>
-	 	
+	</test> 
+
 	<test name="Online Cart Account Page Test">
 		<classes>
 			<class name="com.cart.pagetest.Accountpagetest" />
 		</classes>
-	</test> 
-	<test name="Online Cart Login Negative Test">
+	</test>
+	<!-- <test name="Online Cart Login Negative Test">
 	<classes>
 		<class name="com.cart.pagetest.LoginPageNegativeTest"></class>
 	</classes>
 	</test>-->
 
+	<!-- 
 	<test name="Online Cart Search Page Test">
 		<classes>
 			<class name="com.cart.pagetest.SearchPageNegativeTest"></class>
 		</classes>
-	</test>
+	</test>-->
 	<!-- 	<test name="Online Cart Search Page Test">
 		<classes>
 			<class name="com.cart.pagetest.SearchResultPageTest" />

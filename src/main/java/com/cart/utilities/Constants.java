@@ -10,7 +10,7 @@ public class Constants {
 	public static final String TEST_DATA_SHEET_PATH = "./src/test/resources/Testdata/registerData.xlsx";
 	
 	public static final int DEFAULT_TIME_OUT=5;
-	public static final String LOGIN_PAGE_TITLE ="Account Log";
+	public static final String LOGIN_PAGE_TITLE ="Account Login";
 	public static final String DEMO_PAGE_TITLE="demo title";
 	public static final String LOGIN_PAGE_FRACTION_URL="account/login";
 	public static final String ACCOUNT_PAGE_TITLE = "My Account";
