@@ -1,45 +1,78 @@
-pipeline{
+pipeline 
+{
     agent any
     
-    stages{
-        stage("Build"){
-            steps{
-                echo("Build Project")
+    tools{
+    	maven 'MAVEN3'
+        }
+
+    stages 
+    {
+        stage('Build') 
+        {
+            steps
+            {
+                 git 'https://github.com/jglick/simple-maven-project-with-tests.git'
+                 sh "mvn -Dmaven.test.failure.ignore=true clean package"
             }
-        }    
-        stage("Run UT"){
-            steps{
-                echo("Run unit test cases")
+            post 
+            {
+                success
+                {
+                    junit '**/target/surefire-reports/TEST-*.xml'
+                    archiveArtifacts 'target/*.jar'
+                }
             }
         }
-        stage("Deploy to Dev"){
-            steps{
-                echo("Dev deployment")
-            }
-        }
+        
+        
         stage("Deploy to QA"){
             steps{
-                echo("QA deployment")
+                echo("deploy to qa")
             }
         }
-        stage("Run Automation Regression Test"){
-            steps{
-                echo("Running automation regression tests")
+                
+        stage('Regression Automation Test') {
+            steps {
+                catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
+                    git 'https://github.com/MeiyazhaganS/Jan2023Framework.git'
+                    sh "mvn clean install"
+                    
+                }
             }
         }
-        stage("Deploy to Stage"){
-            steps{
-                echo("Stage deployment")
+                
+     
+        stage('Publish Allure Reports') {
+           steps {
+                script {
+                    allure([
+                        includeProperties: false,
+                        jdk: '',
+                        properties: [],
+                        reportBuildPolicy: 'ALWAYS',
+                        results: [[path: '/allure-results']]
+                    ])
+                }
             }
         }
-        stage("Run Automation Sanity Test"){
+        
+        
+        stage('Publish Extent Report'){
             steps{
-                echo("Running automation sanity tests")
+                     publishHTML([allowMissing: false,
+                                  alwaysLinkToLastBuild: false, 
+                                  keepAll: false, 
+                                  reportDir: 'build', 
+                                  reportFiles: 'TestExecutionReport.html', 
+                                  reportName: 'HTML Extent Report', 
+                                  reportTitles: ''])
             }
         }
-        stage("Deploy to Production"){
+        
+        stage("Deploy to PROD"){
             steps{
-                echo("Prod deployment")
+                echo("deploy to PROD")
             }
         }
     }
